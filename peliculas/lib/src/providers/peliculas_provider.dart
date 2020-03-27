@@ -7,7 +7,7 @@ import 'package:peliculas/src/models/pelicula_model.dart';
 class PeliculasProvider {
 
   String _apikey    = '3f436c3497963eb042c9b07a82f03e00';
-  String _url       = 'https://api.themoviedb.org';
+  String _url       = 'api.themoviedb.org';
   String _language  = 'es-ES';
 
   Future<List<Pelicula>> getEnCines() async{

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/src/providers/peliculas_providers.dart';
+import 'package:peliculas/src/providers/peliculas_provider.dart';
 import 'package:peliculas/src/widgets/card_swiper_widget.dart';
 
 
@@ -21,12 +21,11 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-
       body: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             _swiperTarjetas(),
-            _footer()
           ],
         ),
       )
@@ -54,7 +53,4 @@ class HomePage extends StatelessWidget {
     
   }
 
-  Widget _footer() {
-    return Container();
-  }
 }

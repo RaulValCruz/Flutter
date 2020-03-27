@@ -64,7 +64,7 @@ class Pelicula {
 
   getPosterImg(){
     if (posterPath == null){
-      return 'https://lh3.googleusercontent.com/proxy/CVfmV_tCHocHqNp4Aq9KtqXt5BAAeNE8rnOOlEVtrBliQjAwVB2VTM2aYXB5qBMMHw3O4FggHNWTqhOdMLp3t123lVCevg';
+      return 'https://www.imagen.com.mx/assets/img/imagen_share.png';
     }else{
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     }
