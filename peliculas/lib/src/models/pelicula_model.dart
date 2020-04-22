@@ -64,7 +64,7 @@ class Pelicula {
 
   getPosterImg(){
     if (posterPath == null){
-      return 'https://www.imagen.com.mx/assets/img/imagen_share.png';
+      return 'https://dummyimage.com/300x200/000/fff.jpg&text=ejemplo';
     }else{
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     }
