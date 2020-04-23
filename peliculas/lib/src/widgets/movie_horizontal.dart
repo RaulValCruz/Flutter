@@ -23,7 +23,7 @@ class MovieHorizontal extends StatelessWidget {
     final _screensize = MediaQuery.of(context).size;
 
     _pageController.addListener((){
-      if (_pageController.position.pixels >= _pageController.position.maxScrollExtent -200){
+      if (_pageController.position.pixels >= _pageController.position.maxScrollExtent -300){
         siguientePagina();
       }
     });
@@ -35,9 +35,7 @@ class MovieHorizontal extends StatelessWidget {
         controller: _pageController,
         // children: _tarjetas(context),
         itemCount: peliculas.length,
-        itemBuilder: (context, i){
-          return _tarjeta(context, peliculas[i]);
-        },
+        itemBuilder: (context, i) => _tarjeta(context, peliculas[i]),
       ),
     );
   }
