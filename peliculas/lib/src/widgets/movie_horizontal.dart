@@ -66,7 +66,7 @@ class MovieHorizontal extends StatelessWidget {
           ],
         ),
       );
-  }
+  }//comentario
 
   // List<Widget> _tarjetas(BuildContext context){
 
