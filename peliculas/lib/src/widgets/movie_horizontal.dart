@@ -20,33 +20,48 @@ class MovieHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final _screensize = MediaQuery.of(context).size;
-
-    _pageController.addListener((){
-      if (_pageController.position.pixels >= _pageController.position.maxScrollExtent -300){
-        siguientePagina();
+    final _screenSize = MediaQuery.of(context).size;
+ 
+    _pageController.addListener(() {
+      if (_pageController.position.pixels == _pageController.position.maxScrollExtent) {
+        _pageController.position.animateTo(
+          _pageController.position.maxScrollExtent - _screenSize.width * 0.32,
+          duration: Duration(milliseconds: 1000),
+          curve: Curves.elasticOut,
+        );
+      }
+      if (_pageController.position.pixels == _pageController.position.minScrollExtent) {
+        _pageController.position.animateTo(
+          _screenSize.width * 0.3,
+          duration: Duration(milliseconds: 1000),
+          curve: Curves.elasticOut,
+        );
       }
     });
-
+ 
     return Container(
-      height: _screensize.height * 0.2,
-      child: PageView.builder(
+      height: _screenSize.height * 0.26,
+       child: PageView.builder( 
         pageSnapping: false,
-        controller: _pageController,
+          controller: _pageController,
         // children: _tarjetas(context),
-        itemCount: peliculas.length,
-        itemBuilder: (context, i) => _tarjeta(context, peliculas[i]),
+           itemCount: peliculas.length,
+         itemBuilder: ( context, i ) => _tarjeta(context, peliculas[i] ),
       ),
     );
   }
 
   Widget _tarjeta(BuildContext context, Pelicula pelicula){
     
-      return Container(
-        margin: EdgeInsets.only(right:15.0),
-        child: Column(
-          children: <Widget>[
-            ClipRRect(
+    pelicula.uniqueId='${pelicula.id}-poster';
+
+    final tarjeta = Container(
+      margin: EdgeInsets.only(right:15.0),
+      child: Column(
+        children: <Widget>[
+          Hero(
+            tag: pelicula.uniqueId,
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
                 image: NetworkImage(pelicula.getPosterImg()),
@@ -55,43 +70,21 @@ class MovieHorizontal extends StatelessWidget {
                 height: 115.0,
               ),
             ),
-            SizedBox(height: 3.0),
-            Text(
-              pelicula.title,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.caption,
-            ),
-          ],
-        ),
-      );
+          ),
+          SizedBox(height: 4.0),
+          Text(
+            pelicula.title,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ],
+      ),
+    );
+    return GestureDetector(
+      child: tarjeta,
+      onTap: (){
+        Navigator.pushNamed(context, 'detalle', arguments:pelicula);
+      },
+    );
   }//comentario
-
-  // List<Widget> _tarjetas(BuildContext context){
-
-  //   return peliculas.map( (pelicula){
-
-  //     return Container(
-  //       margin: EdgeInsets.only(right:15.0),
-  //       child: Column(
-  //         children: <Widget>[
-  //           ClipRRect(
-  //             borderRadius: BorderRadius.circular(20.0),
-  //             child: FadeInImage(
-  //               image: NetworkImage(pelicula.getPosterImg()),
-  //               placeholder: AssetImage('assets/img/no-image.jpg'),
-  //               fit: BoxFit.cover,
-  //               height: 115.0,
-  //             ),
-  //           ),
-  //           SizedBox(height: 3.0),
-  //           Text(
-  //             pelicula.title,
-  //             overflow: TextOverflow.ellipsis,
-  //             style: Theme.of(context).textTheme.caption,
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   }).toList();
-  // }
 }

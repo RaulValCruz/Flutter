@@ -13,6 +13,9 @@ class Peliculas {
 }
 
 class Pelicula {
+
+  String uniqueId;
+
   int voteCount;
   int id;
   bool video;
@@ -64,9 +67,17 @@ class Pelicula {
 
   getPosterImg(){
     if (posterPath == null){
-      return 'https://dummyimage.com/300x200/000/fff.jpg&text=ejemplo';
+      return 'https://artprojectgroup.es/wp-content/uploads/diseno-web-blog.jpg';
     }else{
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+  }
+
+  getBackgroundImg(){
+    if (posterPath == null){
+      return 'https://www.pinpng.com/pngs/m/341-3415688_no-avatar-png-transparent-png.png';
+    }else{
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
     }
   }
 
